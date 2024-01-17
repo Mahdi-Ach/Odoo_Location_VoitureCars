@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="conducteur_view_form" model="ir.ui.view">
+        <field name="name">Conducteur de Vehicule</field>
+        <field name="model">location_cars.conducteur</field>
+        <field name="arch" type="xml">
+            <form strig="conducteur">
+                <sheet>
+                    <field style="border:1px solid black;margin-left:50px" name="image_128" widget='image' class="oe_avatar"/>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="email"/>
+                    </group>
+                    <group>
+                        <field name="phone"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

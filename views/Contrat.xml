@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="contrat_view_form" model="ir.ui.view">
+        <field name="name">Contrat de Vehicule</field>
+        <field name="model">location_cars.contract</field>
+        <field name="arch" type="xml">
+            <header>
+                <button name="action_report" type="object" string="print"/>
+                <button string="envoyer par email" type="object" class="oe_highlight" name="send_email_to_client"/>
+                <field name="state" widget="statusbar" />
+            </header>
+            <sheet>
+                <form string="Contract" version="7.0">
+                    <group col="2">
+                        <group string="Informations sur le contract">
+                            <field name="responsable" required="True" />
+                            <field name="reference" required="True" />
+                            <field name="cout_activation" required="True" />
+                            <field name="conducteure_id" required="True" />
+                            <field name="lieu" required="True"/>
+                        </group>
+                        <group string="Informations sur le vehicule">
+                            <field name="vehicle_id" required="True"/>
+                            <field name="date_affectation" on_change="check_dates" required="True"/>
+                            <field name="date_debut" on_change="check_dates" required="True"/>
+                            <field name="date_expiration" on_change="check_dates" required="True"/>
+                        </group>
+                    </group>
+                    <div string="notes">
+                        <field name="notes" required="True" placeholder="Write here all other information relative to this contract" />
+                    </div>
+                    <notebook>
+                        <page string="Service">
+                            <field name="service_ids">
+                                <tree name="location_cars.service" limit="5" offset="5" hidden="True">
+                                    <field name="description" />
+                                </tree>
+                            </field>
+                        </page>
+                     </notebook>
+                </form>
+            </sheet>
+        </field>
+    </record>
+    <record id="contrat_view_tree" model="ir.ui.view">
+        <field name="name">Contrat de Vehicule</field>
+        <field name="model">location_cars.contract</field>
+        <field name="arch" type="xml">
+            <tree string="Contrat">
+                <field name="vehicle_id"/>
+                <field name="reference" />
+                <field name="date_debut"/>
+                <field name="state"/>
+                <field name="cout_activation" />
+            </tree>
+        </field>
+    </record>
+    <record id="cout" model="ir.ui.view">
+        <field name="name">Contract Graph</field>
+        <field name="model">location_cars.contract</field>
+        <field name="arch" type="xml">
+            <graph string="Cost">
+                <field name="date_debut" />
+                <field name="combined_cost" type="measure" string="Combined Cost" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="contract_calendar_view" model="ir.ui.view">
+            <field name="name">Contract Calendar</field>
+            <field name="model">location_cars.contract</field>
+            <field name="arch" type="xml">
+                <calendar string="contract" date_start="date_debut" date_stop="date_expiration" color="reference">
+                    <field name="responsable"/>
+                </calendar>
+            </field>
+    </record>
+
+</odoo>

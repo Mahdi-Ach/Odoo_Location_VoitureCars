@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="vehicule_action_form" model="ir.actions.act_window">
+        <field name="name">Voiture</field>
+        <field name="res_model">location_cars.vehicule</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="contract_action_form" model="ir.actions.act_window">
+        <field name="name">Contrat</field>
+        <field name="res_model">location_cars.contract</field>
+        <field name="view_mode">tree,form,calendar</field>
+    </record>
+    <record id="analyse_action_form" model="ir.actions.act_window">
+        <field name="name">Contrat</field>
+        <field name="res_model">location_cars.contract</field>
+        <field name="view_mode">graph</field>
+    </record>
+    <record id="service_action_form" model="ir.actions.act_window">
+        <field name="name">Service</field>
+        <field name="res_model">location_cars.service</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="marque_action_form" model="ir.actions.act_window">
+        <field name="name">Marque</field>
+        <field name="res_model">location_cars.marque</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="model_action_form" model="ir.actions.act_window">
+        <field name="name">Model</field>
+        <field name="res_model">location_cars.model</field>
+        <field name="context">{'search_default_group_customer_id':1}</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="etiquette_action_form" model="ir.actions.act_window">
+        <field name="name">Etiquette</field>
+        <field name="res_model">location_cars.etiquette</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="service_type_action_form" model="ir.actions.act_window">
+        <field name="name">Service Type</field>
+        <field name="res_model">location_cars.type</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+    <menuitem id="location_cars_main_menu" name="location cars"/>
+        <menuitem id="menu_vehicules" name="Voitures" parent="location_cars_main_menu">
+            <menuitem id="vehicule_menu" name="Voiture" sequence="10" action="vehicule_action_form" />
+            <menuitem id="contrat_menu" name="Contrat" sequence="20" action="contract_action_form" />
+            <menuitem id="service_menu" name="Service" sequence="30" action="service_action_form" />
+        </menuitem>
+    <menuitem id="menu_analyse" name="Analyse" parent="location_cars_main_menu">
+            <menuitem id="analyse_menu" name="Cout" sequence="10" action="analyse_action_form" />
+        </menuitem>
+    <menuitem id="menu_configuration" name="Configuration" parent="location_cars_main_menu">
+            <menuitem id="marque_menu" name="Marque De Voiture" sequence="10" action="marque_action_form" />
+            <menuitem id="model_menu" name="Model De Voitue" sequence="20" action="model_action_form" />
+            <menuitem id="etiquette_menu" name="Ettiquete De Voiture" sequence="30" action="etiquette_action_form" />
+            <menuitem id="service_type_menu" name="Service Type" sequence="40" action="service_type_action_form" />
+    </menuitem>
+</odoo>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_op_ticket">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2 style="text-align:center">Contrat</h2>
+                        <div style="position:relative">
+                            <t t-foreach="o.vehicle_id" t-as="vehicle">
+                                    <p>Nom Voiture: <span t-field="vehicle.name"/></p>
+                                    <img t-attf-src="data:image/*;base64,{{vehicle.image_128}}" t-att-alt="vehicle.image_128" style="height:70px;width:70px;position:absolute;right:0%;top:-50%"/>
+                            </t>
+                        </div>
+                        <div>
+                            <p>Responsable : <span t-field="o.responsable"/></p>
+                            <p>Reference : <span t-field="o.reference"/></p>
+                            <p>Cout d'activation : <span t-field="o.cout_activation"/></p>
+                            <p>Année du model : <span t-field="o.responsable"/></p>
+                            <t t-foreach="o.conducteure_id" t-as="cond">
+                                <p>Nom de Conducteur: <span t-field="cond.name"/></p>
+                            </t>
+                            <p>Lieu : <span t-field="o.lieu"/></p>
+                        </div>
+                        <hr/>
+                        <div>
+                            <p>Date debut : <span t-field="o.date_debut"/></p>
+                            <p>Date expiration : <span t-field="o.date_expiration"/></p>
+                            <p>Date affectation : <span t-field="o.date_affectation"/></p>
+                        </div>
+                        <hr/>
+                        <div>
+                            <h2 style="text-align:center">Service inclus</h2>
+                            <t t-foreach="o.service_ids" t-as="service">
+                                <p>
+                                        reference_service: <span t-field="service.reference_service"/> -> type service : <span t-field="service.type_service_id.name"/>
+                                </p>
+                            </t>
+                            <p>Cout de Service : <span t-field="o.total_service_cost"/></p>
+                        </div>
+                        <div>
+                            <p>Notes : <span t-field="o.notes"/></p>
+                        </div>
+                        <div>
+                            <p>Cout Total : <span t-field="o.combined_cost"/></p>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

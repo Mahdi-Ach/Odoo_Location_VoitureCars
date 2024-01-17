@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id='vehicule_model_view_form' model='ir.ui.view'>
+        <field name="name">Model du Vehicule</field>
+        <field name="model">location_cars.model</field>
+        <field name="arch" type="xml">
+            <form string="Model">
+                <sheet>
+                    <div  class="oe_title" style="max-width: none;display:flex;justify-content: space-between;">
+                        <div>
+                            <h1>
+                            <field name="name" placeholder="e.g. Model S"/>
+                            </h1>
+                            <h2>
+                            <span style="display:inline-block;width: 100px;">
+                            <label for="brand_id" class="oe_edit_only"/>
+                            </span>
+                            <field name="brand_id" placeholder="e.g. Tesla" style="font-size: 13px;width: 150px;"/>
+                        </h2>
+                        </div>
+                        <field name="image_128" widget='image' class="oe_avatar"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="vehicule_model_view_search" model="ir.ui.view">
+        <field name="name">dmr.search.view</field>
+        <field name="model">location_cars.model</field>
+        <field name="arch" type="xml">
+            <search string="DMR">
+                <filter name="group_customer_id" string="Customer" icon="terp-partner" context="{'group_by':'brand_id'}"/>
+            </search>
+        </field>
+    </record>
+    <record id='vehicule_model_view_tree' model='ir.ui.view'>
+        <field name="name">Model du Vehicule Tree View</field>
+        <field name="model">location_cars.model</field>
+        <field name="arch" type="xml">
+            <tree string="Model du Vehicule">
+                <field name="name" ref="vehicule_model_view_search"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>

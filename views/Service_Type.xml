@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record id='vehicule_service_types_view_tree' model='ir.ui.view'>
+        <field name="name">Type de Service</field>
+        <field name="model">location_cars.type</field>
+        <field name="arch" type="xml">
+            <tree string="Service Types">
+                <field name="name" />
+                <field name="category"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

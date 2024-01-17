@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record id='vehicule_view_form' model='ir.ui.view'>
+        <field name="name">Vehicule</field>
+        <field name="model">location_cars.vehicule</field>
+        <field name="arch" type="xml">
+            <form string="Voiture" version="7.0">
+                <sheet>
+                    <field style="border:1px solid black" name="image_128" widget='image' readonly="1" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label for="model_id" class="oe_edit_only"/>
+                        <h1>
+                            <field name="model_id" on_change="changing_logo" placeholder="e.g. Model S"/>
+                        </h1>
+                        <label for="plaque_immatriculation" class="oe_edit_only"/>
+                        <h2>
+                            <field name="plaque_immatriculation" class="oe_inline" placeholder="e.g. PAE 326"/>
+                        </h2>
+                        <p>
+                            <label for="Date_immatriculation" class="oe_edit_only"/>
+                            <field style="border:0.5px solid #ddd" name="Date_immatriculation"/>
+                        </p>
+                        <h2>
+                            <label for="etiquette" class="oe_edit_only"/>
+                            <field style="border:0.5px solid #ddd" name="etiquette" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}"/>
+                        </h2>
+                    </div>
+                    <group col="2">
+                        <group string="Odometre">
+                            <field name="odometer" style="border:0.5px solid #ddd"/>
+                            <field name="odometer_unit" style="border:0.5px solid #ddd"/>
+                            <field name="transmission" style="border:0.5px solid #ddd" />
+                            <field name="Type_carburant" style="border:0.5px solid #ddd"/>
+                            <field name="Nombre_chevaux" style="border:0.5px solid #ddd"/>
+                            <field name="puissance_tax" style="border:0.5px solid #ddd"/>
+                            <field name="puissance" style="border:0.5px solid #ddd"/>
+                            <field name="co2" style="border:0.5px solid #ddd"/>
+                            <field name="test" style="border:0.5px solid #ddd"/>
+                        </group>
+                        <group string="Voiture">
+                            <field style="border:0.5px solid #ddd" name="chass_num"/>
+                            <field style="border:0.5px solid #ddd" name="car_valeur" widget="monetary"/>
+                            <field style="border:0.5px solid #ddd" name="net_car_valeur" widget="monetary"/>
+                            <field style="border:0.5px solid #ddd" name="residual_valeur" widget="monetary"/>
+                            <field style="border:0.5px solid #ddd" name="chaise"/>
+                            <field style="border:0.5px solid #ddd" name="portes"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Model">
+                            <field style="border:0.5px solid #ddd" name="coleur"/>
+                            <field style="border:0.5px solid #ddd" name="anne_model"/>
+                        </group>
+                    </group>
+
+                    <div string="Description">
+                            <field style="border:0.5px solid #ddd" name="description" nolabel="1" placeholder="Write here any other information related to this vehicle" />
+                        </div>
+                     <notebook>
+                        <page string="Contrats">
+                            <field name="contract_ids">
+                                <tree name="location_cars.contract">
+                                        <field name="reference" />
+                                        <field name="state" />
+                                </tree>
+                            </field>
+                        </page>
+                     </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="vehicle_graph_view" model="ir.ui.view">
+        <field name="name">Vehicule</field>
+        <field name="model">location_cars.vehicule</field>
+        <field name="arch" type="xml">
+            <tree string="Vehicule">
+                <field name="name" />
+                <field name="plaque_immatriculation" />
+                <field name="odometer" />
+
+            </tree>
+        </field>
+    </record>
+</odoo>

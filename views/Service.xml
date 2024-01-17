@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="service_view_form" model="ir.ui.view">
+        <field name="name">Service de Vehicule</field>
+        <field name="model">location_cars.service</field>
+        <field name="arch" type="xml">
+            <form string="Service">
+                <sheet>
+                    <div>
+                        <group>
+                            <field name="description" style="border:1px solid #d2d2d2"/>
+                            <field name="contract_id" style="border:1px solid #d2d2d2"/>
+                            <field name="type_service_id" domain="[('category', '=', 'service')]" style="border:1px solid #d2d2d2"/>
+                            <field name="reference_service" style="border:1px solid #d2d2d2"/>
+                            <field name="cout" style="border:1px solid #d2d2d2"/>
+                            <field name="notes" style="border:1px solid #d2d2d2"/>
+                        </group>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+        </record>
+    <record id="service_view_tree" model="ir.ui.view">
+        <field name="name">Service de Vehicule</field>
+        <field name="model">location_cars.service</field>
+        <field name="arch" type="xml">
+            <tree string="Service">
+                <field name="description" />
+                <field name="contract_id"/>
+                <field name="reference_service"/>
+                <field name="cout"/>
+            </tree>
+        </field>
+        </record>
+</odoo>
